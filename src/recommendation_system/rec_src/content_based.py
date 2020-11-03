@@ -2,6 +2,8 @@ from __future__ import print_function
 import numpy as np
 import pandas as pd
 
+import settings
+
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.linear_model import Ridge
 from sklearn import linear_model
