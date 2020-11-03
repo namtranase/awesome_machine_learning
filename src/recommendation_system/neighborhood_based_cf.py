@@ -42,8 +42,15 @@ class uuCF(object):
             self.Ybar[ids, 2] = ratings - self.mu[n]
 
         # Form the rating matrix as a sparse matrix
-        self.Ybar = spa
-        #  
+        self.Ybar = sparse.coo_matrix(
+            (self.Ybar[:, 2], (self.Ybar[:, 1], self.Ybar[:, 0])),
+            (self.n_items, self.n_users)).tocsr()
+
+        self.S = self.sim_func(self.Ybar.T, self.Ybar.T)
+
+    def pred(self, u, i):
+        pass
+
 def process_data():
     pass
 
