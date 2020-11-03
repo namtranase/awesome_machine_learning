@@ -1,8 +1,10 @@
 from __future__ import print_function
 import numpy as np
 import pandas as pd
+import logging
 
 import settings
+from src.config.config import read_config_file
 
 from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.linear_model import Ridge
@@ -25,9 +27,9 @@ def predict_for_user(rate_test, Yhat, user_id):
     """
     np.set_printoptions(precision=2)
     ids, scores = get_items_rated_by_user(rate_test, user_id)
-    print('Rated by movies ids: ', ids)
-    print('True ratings: ', scores)
-    print('Predict ratings: ', Yhat[ids, user_id])
+    logging.info('Rated by movies ids: %s', ids)
+    logging.info('True ratings: %s', scores)
+    logging.info('Predict ratings: %s', Yhat[ids, user_id])
 
 def evaluate_model(num_users, Yhat, rates, W, b):
     """Evaluate for model.
@@ -47,7 +49,7 @@ def process_data():
     user_cols = ['user_id', 'age', 'sex', 'occupation', 'zip_code']
     users = pd.read_csv('data/ml-100k/u.user', sep='|', names=user_cols)
     num_users = users.shape[0]
-    print('Number of users: ', num_users)
+    logging.info('Number of users: %s', num_users)
 
     # Read rating file
     rate_cols = ['user_id', 'movie_id', 'rating', 'unix_timestamp']
@@ -56,11 +58,9 @@ def process_data():
     ratings_test = pd.read_csv('data/ml-100k/ua.test', sep='\t', names=rate_cols)
 
     rate_train = ratings_base.to_numpy()
-    print(rate_train)
+    logging.info('Number of training rates: %s', rate_train.shape[0])
     rate_test = ratings_test.to_numpy()
-
-    print('Number of training rates: ', rate_train.shape[0])
-    print('Number of testing rates: ', rate_test.shape[0])
+    logging.info('Number of testing rates: %s', rate_test.shape[0])
 
     # Read items file
     item_cols = ['movie id', 'movie title' ,'release date','video release date', 'IMDb URL', 'unknown', 'Action', 'Adventure',
@@ -69,13 +69,11 @@ def process_data():
 
     items = pd.read_csv('data/ml-100k/u.item', sep='|', names=item_cols, encoding='latin-1')
     items_train = items.to_numpy()[:, -19:]
-    print(items_train)
-    print('Number of items: ', items_train.shape[0])
+    logging.info('Number of items: %s', items_train.shape[0])
 
     # Build feature vectors for items
     transformer = TfidfTransformer(smooth_idf=True, norm='l2')
     X_train = transformer.fit_transform(items_train.tolist()).toarray()
-    print(X_train)
 
     # Build Ridge Regression model
     d = X_train.shape[1]
@@ -98,11 +96,18 @@ def process_data():
 
     # Evaluate model
     rmse_train = evaluate_model(num_users, Yhat, rate_train, W, b)
+    logging.info('RMSE for training phase: %s', rmse_train)
     rmse_test = evaluate_model(num_users, Yhat, rate_test, W, b)
-    print("RMSE for training phase: {}".format(rmse_train))
-    print("RMSE for testing phase: {}".format(rmse_test))
+    logging.info('RMSE for testing phase: %s', rmse_test)
 
-if __name__ == "__main__":
+def main():
     """Main program for content_based rec program.
     """
+    config = read_config_file(settings.config_file)
+    if config['debug']:
+        logging.basicConfig(level=logging.DEBUG)
+    logging.debug('Start content-based RS with config: %s', config)
     process_data()
+
+if __name__ == "__main__":
+    main()
