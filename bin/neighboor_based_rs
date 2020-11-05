@@ -2,9 +2,9 @@
 
 from datetime import datetime
 
-from src.recommendation_system import content_based
+from src.recommendation_system import neighborhood_based_cf
 
 if __name__ == '__main__':
     start_time = datetime.now()
-    content_based.main()
+    neighborhood_based_cf.main()
     print("Run time: {}".format(datetime.now() - start_time))
