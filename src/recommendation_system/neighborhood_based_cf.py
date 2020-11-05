@@ -49,8 +49,21 @@ class uuCF(object):
         self.S = self.sim_func(self.Ybar.T, self.Ybar.T)
 
     def pred(self, u, i):
-        pass
-
+        """Predict the rating of user u for item i.
+        """
+        # Find item i
+        ids = np.where(self.Y_data[:, 1] == i)[0].astype(np.int32)
+        # All users who rated i
+        users_rated_i = (self.Y_data[ids, 0]).astype(np.int32)
+        # Similarity of u and users who rated i
+        sim = self.S[um users_rated_i]
+        # Most k similar users
+        nns = np.argsort(sim)[-self.k:]
+        nearest_s = sim[nns]
+        # The correctsponding ratings
+        r = self.Ybar[i, users_rated_i[nns]]
+        eps = 1e-8 # Avoid zero division
+        return r*nearest_s).sum()/(np.abs(nearest_s).sum() + eps) + self.mu[u]
 def process_data():
     pass
 
