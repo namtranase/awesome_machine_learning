@@ -64,6 +64,7 @@ class uuCF(object):
         r = self.Ybar[i, users_rated_i[nns]]
         eps = 1e-8 # Avoid zero division
         return r*nearest_s).sum()/(np.abs(nearest_s).sum() + eps) + self.mu[u]
+
 def process_data():
     pass
 
