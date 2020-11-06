@@ -1,14 +1,13 @@
 from __future__ import print_function
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.linear_model import Ridge
 
 import settings
 from src.config.config import read_config_file
-
-from sklearn.feature_extraction.text import TfidfTransformer
-from sklearn.linear_model import Ridge
-from sklearn import linear_model
 
 def get_items_rated_by_user(rate_matrix, user_id):
     """Return scores of items for given user_id.
@@ -99,9 +98,9 @@ def process_data():
     predict_for_user(rate_test, Yhat, 100)
 
     # Evaluate model
-    rmse_train = evaluate_model(num_users, Yhat, rate_train, W, b)
+    rmse_train = evaluate_model(num_users, Yhat, rate_train)
     logging.info('RMSE for training phase: %s', rmse_train)
-    rmse_test = evaluate_model(num_users, Yhat, rate_test, W, b)
+    rmse_test = evaluate_model(num_users, Yhat, rate_test)
     logging.info('RMSE for testing phase: %s', rmse_test)
 
 def main():
