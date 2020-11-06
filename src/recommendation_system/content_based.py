@@ -31,7 +31,7 @@ def predict_for_user(rate_test, Yhat, user_id):
     logging.info('True ratings: %s', scores)
     logging.info('Predict ratings: %s', Yhat[ids, user_id])
 
-def evaluate_model(num_users, Yhat, rates, W, b):
+def evaluate_model(num_users, Yhat, rates):
     """Evaluate for model.
     """
     se = cnt = 0
@@ -45,6 +45,8 @@ def evaluate_model(num_users, Yhat, rates, W, b):
     return np.sqrt(se/cnt)
 
 def process_data():
+    """Process content based program.
+    """
     # Read user file
     user_cols = ['user_id', 'age', 'sex', 'occupation', 'zip_code']
     users = pd.read_csv('data/ml-100k/u.user', sep='|', names=user_cols)
@@ -63,9 +65,11 @@ def process_data():
     logging.info('Number of testing rates: %s', rate_test.shape[0])
 
     # Read items file
-    item_cols = ['movie id', 'movie title' ,'release date','video release date', 'IMDb URL', 'unknown', 'Action', 'Adventure',
-                 'Animation', 'Children\'s', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Fantasy',
-                 'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance', 'Sci-Fi', 'Thriller', 'War', 'Western']
+    item_cols = ['movie id', 'movie title' ,'release date','video release date',
+                 'IMDb URL', 'unknown', 'Action', 'Adventure', 'Animation',
+                 'Children\'s', 'Comedy', 'Crime', 'Documentary', 'Drama',
+                 'Fantasy', 'Film-Noir', 'Horror', 'Musical', 'Mystery', 'Romance',
+                 'Sci-Fi', 'Thriller', 'War', 'Western']
 
     items = pd.read_csv('data/ml-100k/u.item', sep='|', names=item_cols, encoding='latin-1')
     items_train = items.to_numpy()[:, -19:]
