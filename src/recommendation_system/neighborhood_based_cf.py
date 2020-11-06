@@ -10,6 +10,8 @@ import settings
 from src.config.config import read_config_file
 
 class uuCF(object):
+    """Class implement for user user collaborative filtering.
+    """
     def __init__(self,
                  Y_data,
                  k,
