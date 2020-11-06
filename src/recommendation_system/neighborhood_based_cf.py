@@ -13,7 +13,8 @@ class uuCF(object):
     def __init__(self,
                  Y_data,
                  k,
-                 sim_func=cosin_similarity):
+                 sim_func=cosine_similarity):
+        self.Y_data = Y_data
         # Number of neighborhood
         self.k = k
         # Similarity function, default: cosin sim
@@ -30,7 +31,7 @@ class uuCF(object):
         self.Ybar = self.Y_data.copy()
         self.mu = np.zeros((self.n_users,))
 
-        for n in xrange(self.n_users):
+        for n in range(self.n_users):
             # Row indices of rating of user n
             ids = np.where(users == n)[0].astype(np.int32)
             # Indices of all items rated by user n
@@ -56,21 +57,21 @@ class uuCF(object):
         # All users who rated i
         users_rated_i = (self.Y_data[ids, 0]).astype(np.int32)
         # Similarity of u and users who rated i
-        sim = self.S[um users_rated_i]
+        sim = self.S[u, users_rated_i]
         # Most k similar users
         nns = np.argsort(sim)[-self.k:]
         nearest_s = sim[nns]
         # The correctsponding ratings
         r = self.Ybar[i, users_rated_i[nns]]
         eps = 1e-8 # Avoid zero division
-        return r*nearest_s).sum()/(np.abs(nearest_s).sum() + eps) + self.mu[u]
+        return (r*nearest_s).sum()/(np.abs(nearest_s).sum() + eps) + self.mu[u]
 
 def process_data():
     """Process neighboor_based_cf program.
     """
     r_cols = ['user_id', 'movie_id', 'rating', 'unix_timestamp']
-    ratings_base = pd.read_csv('data/l-100k/ua.base', sep='/t', names=r_cols)
-    ratings_test = pd.read_csv('data/l-100k/ua.test', sep='/t', names=r_cols)
+    ratings_base = pd.read_csv('data/ml-100k/ua.base', sep='\t', names=r_cols)
+    ratings_test = pd.read_csv('data/ml-100k/ua.test', sep='\t', names=r_cols)
 
     rate_train = ratings_base.to_numpy()
     rate_test = ratings_test.to_numpy()
