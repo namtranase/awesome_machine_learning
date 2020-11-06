@@ -1,13 +1,13 @@
 from __future__ import print_function
+import logging
+
 import numpy as np
 import pandas as pd
-import logging
+from sklearn.metrics.pairwise import cosine_similarity
+from scipy import sparse
 
 import settings
 from src.config.config import read_config_file
-
-from sklearn.metrics.pairwise import cosine_similarity
-from scipy import sparse
 
 class uuCF(object):
     def __init__(self,
@@ -24,7 +24,7 @@ class uuCF(object):
         self.n_users = int(np.max(self.Y_data[:, 0])) + 1
         # Number of items
         self.n_items = int(np.max(self.Y_data[:, 1])) + 1
-    
+
     def fit(self):
         # Normalized Y_data -> Ybar
         users = self.Y_data[:, 0]
@@ -88,7 +88,7 @@ def process_data():
     for n in range(n_tests):
         pred = rs.pred(rate_test[n, 0], rate_test[n, 1])
         SE += (pred - rate_test[n,2])**2
-    
+
     RMSE = np.sqrt(SE/n_tests)
     logging.debug('Uses-user CF, RMSE: %s', RMSE)
 def main():
