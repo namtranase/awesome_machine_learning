@@ -66,8 +66,30 @@ class uuCF(object):
         return r*nearest_s).sum()/(np.abs(nearest_s).sum() + eps) + self.mu[u]
 
 def process_data():
-    pass
+    """Process neighboor_based_cf program.
+    """
+    r_cols = ['user_id', 'movie_id', 'rating', 'unix_timestamp']
+    ratings_base = pd.read_csv('data/l-100k/ua.base', sep='/t', names=r_cols)
+    ratings_test = pd.read_csv('data/l-100k/ua.test', sep='/t', names=r_cols)
 
+    rate_train = ratings_base.to_numpy()
+    rate_test = ratings_test.to_numpy()
+
+    # Indices start form 0
+    rate_train[:, :2] -= 1
+    rate_test[:, :2] -= 1
+
+    rs = uuCF(rate_train, k = 40)
+    rs.fit()
+
+    n_tests = rate_test.shape[0]
+    SE = 0 # squared error
+    for n in range(n_tests):
+        pred = rs.pred(rate_test[n, 0], rate_test[n, 1])
+        SE += (pred - rate_test[n,2])**2
+    
+    RMSE = np.sqrt(SE/n_tests)
+    logging.debug('Uses-user CF, RMSE: %s', RMSE)
 def main():
     """Main program for content_based rec program.
     """
