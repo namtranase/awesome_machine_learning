@@ -12,6 +12,43 @@ from src.config.config import read_config_file
 d = 1000
 N = 10000
 
+def dist_pp(z, x):
+    """Calculate norm l2 btw two vectors.
+    """
+    if not z or not x:
+        return None
+
+    d = z - x.reshape(z.shape)
+
+    return np.sum(d*d)
+
+def dist_ps_naive(z, X):
+    """Calculate norm l2 btw z and matrix Z
+    based on dist_pp.
+    """
+    if not z or not X:
+        return None
+
+    N = X.shape[0]
+    res = np.zeros((1, N))
+    logging.debug('Type of results: %s', res.shape)
+    for i in range(N):
+        res[0][i] = dist_pp(z, X[i])
+
+    return res
+
+def dist_ps_fast(z, X):
+    """Calculate distance btw two vectors by
+    the smart way.
+    """
+    if not z or not X:
+        return None
+    # Square of l2 norm of each row of X
+    X2 = np.sum(X*X, 1)
+    z2 = np.np.sum(z*z)
+    # z2 can be ignore
+    return X2 + z2 - 2*X.dot(z)
+
 def process_data():
     """Process KNN program.
     """
@@ -19,6 +56,15 @@ def process_data():
     X = np.random.randn(N, d)
     z = np.random.randn(d)
     logging.debug('Length of sample z: %s', len(z))
+
+    t1 = time()
+    D1 = dist_ps_naive(z, X)
+    logging.debug("Regular way knn, running time: %s s", time() - t1)
+
+    t2 = time()
+    D2 = dist_ps_fast(z, X)
+    logging.debug("Fast way knn, running time: %s s", time() - t2)
+    logging.debug("Results diffirence: %s", np.linalg.norm(D1 - D2))
 
 def main():
     """Main program for KNN program.
