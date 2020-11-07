@@ -15,7 +15,7 @@ N = 10000
 def dist_pp(z, x):
     """Calculate norm l2 btw two vectors.
     """
-    if not z or not x:
+    if not z.all() or not x.all():
         return None
 
     d = z - x.reshape(z.shape)
@@ -26,7 +26,7 @@ def dist_ps_naive(z, X):
     """Calculate norm l2 btw z and matrix Z
     based on dist_pp.
     """
-    if not z or not X:
+    if not z.all() or not X.all():
         return None
 
     N = X.shape[0]
@@ -41,11 +41,11 @@ def dist_ps_fast(z, X):
     """Calculate distance btw two vectors by
     the smart way.
     """
-    if not z or not X:
+    if not z.all() or not X.all():
         return None
     # Square of l2 norm of each row of X
     X2 = np.sum(X*X, 1)
-    z2 = np.np.sum(z*z)
+    z2 = np.sum(z*z)
     # z2 can be ignore
     return X2 + z2 - 2*X.dot(z)
 
