@@ -18,7 +18,7 @@ def process_data():
     # N d-dimensional points
     X = np.random.randn(N, d)
     z = np.random.randn(d)
-    logging.debug('Sample z: %s', z)
+    logging.debug('Length of sample z: %s', len(z))
 
 def main():
     """Main program for KNN program.
