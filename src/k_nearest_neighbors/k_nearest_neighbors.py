@@ -3,7 +3,6 @@ import logging
 from time import time
 
 import numpy as np
-import pandas as pd
 
 import settings
 from src.config.config import read_config_file
