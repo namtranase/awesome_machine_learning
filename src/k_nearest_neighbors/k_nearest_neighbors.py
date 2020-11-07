@@ -1,5 +1,6 @@
 from __future__ import print_function
 import logging
+from time import time
 
 import numpy as np
 import pandas as pd
@@ -7,10 +8,17 @@ import pandas as pd
 import settings
 from src.config.config import read_config_file
 
+# d: dimension of sample, N: number of sample
+d = 1000
+N = 10000
 
 def process_data():
     """Process KNN program.
     """
+    # N d-dimensional points
+    X = np.random.randn(N, d)
+    z = np.random.randn(d)
+    logging.debug('Sample z: %s', z)
 
 def main():
     """Main program for KNN program.
