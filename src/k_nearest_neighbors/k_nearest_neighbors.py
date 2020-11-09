@@ -48,10 +48,34 @@ def dist_ps_fast(z, X):
     # z2 can be ignore
     return X2 + z2 - 2*X.dot(z)
 
+def dist_ss_normal(Z, X):
+    """Calculate norm l2 btw z in Z and matrix Z
+    based on dist_ps_fast. -> Half fast
+    """
+    M = Z.shape[0]
+    N = X.shape[0]
+    res = np.zeros((M, N))
+    for i in range(M):
+        res[i] = dist_ps_fast(Z[i], X)
+
+    return res
+
+def dist_ss_fast(Z, X):
+    """From each point in one set to each
+    point in another set, this way will fast.
+    """
+    # Square of l2 norm of each ROW of X.
+    X2 = np.sum(X*X, 1)
+    # Square of l2 norm of each ROW of Z
+    Z2 = np.sum(Z*Z, 1)
+
+    return Z2.reshape(-1, 1) + X2.reshape(1, -1) \
+        - 2*Z.dot(X.T)
+
 def process_data():
     """Process KNN program.
     """
-    # N d-dimensional points
+    # Test for one point z and set Z
     X = np.random.randn(N, d)
     z = np.random.randn(d)
     logging.debug('Length of sample z: %s', len(z))
@@ -65,6 +89,16 @@ def process_data():
     logging.debug("Fast way knn, running time: %s s", time() - t2)
     logging.debug("Results diffirence: %s", np.linalg.norm(D1 - D2))
 
+    # Test for set Z and set X
+    M = 100
+    Z = np.random.randn(M, d)
+    t1 = time()
+    D3 = dist_ss_normal(Z, X)
+    logging.debug("Half Fast way knn set2set, running time: %s s", time() - t2)
+
+
+
+    
 def main():
     """Main program for KNN program.
     """
