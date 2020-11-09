@@ -92,13 +92,16 @@ def process_data():
     # Test for set Z and set X
     M = 100
     Z = np.random.randn(M, d)
+
     t1 = time()
     D3 = dist_ss_normal(Z, X)
-    logging.debug("Half Fast way knn set2set, running time: %s s", time() - t2)
+    logging.debug("Half Fast way knn set2set, running time: %s s", time() - t1)
 
+    t1 = time()
+    D4 = dist_ss_fast(Z, X)
+    logging.debug("Fast way knn set2set, running time: %s s", time() - t1)
+    logging.debug("Results diffirence: %s", np.linalg.norm(D3 - D4))
 
-
-    
 def main():
     """Main program for KNN program.
     """
