@@ -26,9 +26,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+### Link dataset
+
+Recommendation System (movielens): https://grouplens.org/datasets/movielens/100k/
+
 ### Run Recommendation System
 
-Content based recommendation systerm:
+Content based recommendation system (Make sure you download the dataset to data dir before running program)::
 
 ```bash
 PYTHONPATH=. ./bin/content_based_rs
