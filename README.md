@@ -39,3 +39,10 @@ Neighboor based collaborative filtering recommendation system:
 ```bash
 PYTHONPATH=. ./bin/neghboor_based_rs
 ```
+
+### Run K Nearest Neighbors
+Compare between regular and fast way when using simple knn
+
+```bash
+PYTHONPATH=. ./bin/k_nearest_neighbors
+```
