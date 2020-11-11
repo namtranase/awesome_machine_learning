@@ -26,14 +26,37 @@ def split_dataset(config, test_size=130):
     logging.debug("Train size: %s, Test size: %s",
                   X_train.shape[0], X_test.shape[0])
 
-    return X_train, y_train, X_test, y_test
+    return X_train, X_test, y_train, y_test
+
+def cal_weight(distances):
+    """Calculate weight for perform knn.
+    """
+    sigma = .4
+
+    return np.exp(-distances**2/sigma)
 
 def process_data(config):
     """Process KNN program.
     """
     # Get dataset and split to train, test
-    X_train, y_train, X_test, y_test = split_dataset(config)
-    logging.debug('Length of sample z: %s', len('dfdfd'))
+    X_train, X_test, y_train, y_test = split_dataset(config)
+
+    # Build knn model with sklearn weight function
+    ## p=2 is using euclide distance
+    model_sample = neighbors.KNeighborsClassifier(
+        n_neighbors=7, p=2, weights='distance')
+    model_sample.fit(X_train, y_train)
+    y_pred = model_sample.predict(X_test)
+    accuary = accuracy_score(y_test, y_pred)
+    logging.debug("Accuary of 7NN with sample weight func: %s", accuary)
+
+    # Build knn model with specific weight function
+    model_self = neighbors.KNeighborsClassifier(
+        n_neighbors=7, p=2, weights=cal_weight)
+    model_self.fit(X_train, y_train)
+    y_pred = model_self.predict(X_test)
+    accuary = accuracy_score(y_test, y_pred)
+    logging.debug("Accuary of 7NN with specific weight func: %s", accuary)
 
 def main():
     """Main program for KNN for iris dataset program.
