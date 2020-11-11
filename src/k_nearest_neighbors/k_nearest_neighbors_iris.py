@@ -3,104 +3,37 @@ import logging
 from time import time
 
 import numpy as np
+from sklearn import neighbors, datasets
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
 import settings
 from src.config.config import read_config_file
 
-# d: dimension of sample, N: number of sample
-d = 1000
-N = 10000
-
-def dist_pp(z, x):
-    """Calculate norm l2 btw two vectors.
+def split_dataset(config, test_size=130):
+    """Get iris dataset and split to train, test set.
     """
-    if not z.all() or not x.all():
-        return None
+    # Load dataset
+    np.random.seed(7)
+    iris = datasets.load_iris()
+    iris_X = iris.data
+    iris_y = iris.target
+    logging.debug('Length of dataset: %s', len(iris_X))
+    logging.debug('Lables of dataset: %s', np.unique(iris_y))
+    # Split dataset
+    X_train, X_test, y_train, y_test = train_test_split(
+        iris_X, iris_y, test_size=test_size)
+    logging.debug("Train size: %s, Test size: %s",
+                  X_train.shape[0], X_test.shape[0])
 
-    d = z - x.reshape(z.shape)
+    return X_train, y_train, X_test, y_test
 
-    return np.sum(d*d)
-
-def dist_ps_naive(z, X):
-    """Calculate norm l2 btw z and matrix Z
-    based on dist_pp.
-    """
-    if not z.all() or not X.all():
-        return None
-
-    N = X.shape[0]
-    res = np.zeros((1, N))
-    logging.debug('Type of results: %s', res.shape)
-    for i in range(N):
-        res[0][i] = dist_pp(z, X[i])
-
-    return res
-
-def dist_ps_fast(z, X):
-    """Calculate distance btw two vectors by
-    the smart way.
-    """
-    if not z.all() or not X.all():
-        return None
-    # Square of l2 norm of each row of X
-    X2 = np.sum(X*X, 1)
-    z2 = np.sum(z*z)
-    # z2 can be ignore
-    return X2 + z2 - 2*X.dot(z)
-
-def dist_ss_normal(Z, X):
-    """Calculate norm l2 btw z in Z and matrix Z
-    based on dist_ps_fast. -> Half fast
-    """
-    M = Z.shape[0]
-    N = X.shape[0]
-    res = np.zeros((M, N))
-    for i in range(M):
-        res[i] = dist_ps_fast(Z[i], X)
-
-    return res
-
-def dist_ss_fast(Z, X):
-    """From each point in one set to each
-    point in another set, this way will fast.
-    """
-    # Square of l2 norm of each ROW of X.
-    X2 = np.sum(X*X, 1)
-    # Square of l2 norm of each ROW of Z
-    Z2 = np.sum(Z*Z, 1)
-
-    return Z2.reshape(-1, 1) + X2.reshape(1, -1) \
-        - 2*Z.dot(X.T)
-
-def process_data():
+def process_data(config):
     """Process KNN program.
     """
-    # Test for one point z and set Z
-    X = np.random.randn(N, d)
-    z = np.random.randn(d)
-    logging.debug('Length of sample z: %s', len(z))
-
-    t1 = time()
-    D1 = dist_ps_naive(z, X)
-    logging.debug("Regular way knn, running time: %s s", time() - t1)
-
-    t2 = time()
-    D2 = dist_ps_fast(z, X)
-    logging.debug("Fast way knn, running time: %s s", time() - t2)
-    logging.debug("Results diffirence: %s", np.linalg.norm(D1 - D2))
-
-    # Test for set Z and set X
-    M = 100
-    Z = np.random.randn(M, d)
-
-    t1 = time()
-    D3 = dist_ss_normal(Z, X)
-    logging.debug("Half Fast way knn set2set, running time: %s s", time() - t1)
-
-    t1 = time()
-    D4 = dist_ss_fast(Z, X)
-    logging.debug("Fast way knn set2set, running time: %s s", time() - t1)
-    logging.debug("Results diffirence: %s", np.linalg.norm(D3 - D4))
+    # Get dataset and split to train, test
+    X_train, y_train, X_test, y_test = split_dataset(config)
+    logging.debug('Length of sample z: %s', len('dfdfd'))
 
 def main():
     """Main program for KNN for iris dataset program.
@@ -108,8 +41,8 @@ def main():
     config = read_config_file(settings.config_file)
     if config['debug']:
         logging.basicConfig(level=logging.DEBUG)
-    logging.debug('Start KNN with config: %s', config)
-    process_data()
+    logging.debug('Start KNN for iris dataset with config: %s', config)
+    process_data(config)
 
 if __name__ == "__main__":
     main()
