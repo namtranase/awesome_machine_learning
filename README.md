@@ -50,3 +50,9 @@ Compare between regular and fast way when using simple knn
 ```bash
 PYTHONPATH=. ./bin/k_nearest_neighbors
 ```
+
+Run knn for iris dataset, tuning to get best parameters
+
+```bash
+PYTHONPATH=. ./bin/k_nearest_neighbors_iris
+```
