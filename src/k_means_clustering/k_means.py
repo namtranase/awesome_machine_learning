@@ -17,7 +17,7 @@ def main():
     config = read_config_file(settings.config_file)
     if config['debug']:
         logging.basicConfig(level=logging.DEBUG)
-    logging.debug('Start KNN with config: %s', config)
+    logging.debug('Start K-means with config: %s', config)
     process_data()
 
 if __name__ == "__main__":

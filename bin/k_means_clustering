@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+from datetime import datetime
+
+from src.k_means_clustering import k_means
+
+if __name__ == '__main__':
+    start_time = datetime.now()
+    k_means.main()
+    print("Run time: {}".format(datetime.now() - start_time))
