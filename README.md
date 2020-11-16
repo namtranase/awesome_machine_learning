@@ -45,6 +45,7 @@ PYTHONPATH=. ./bin/neghboor_based_rs
 ```
 
 ### Run K Nearest Neighbors
+
 Compare between regular and fast way when using simple knn
 
 ```bash
@@ -55,4 +56,12 @@ Run knn for iris dataset, tuning to get best parameters
 
 ```bash
 PYTHONPATH=. ./bin/k_nearest_neighbors_iris
+```
+
+### Run K Means Clustering
+
+Compare simple kmeans and sklearn kmeans
+
+```bash
+PYTHONPATH=. ./bin/k_means_clustering
 ```
