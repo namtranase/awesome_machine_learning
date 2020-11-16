@@ -37,6 +37,13 @@ def kmeans_assign_labels(X, centroids):
 
     return np.argmin(D, axis=1)
 
+def has_converged(centroids, new_centroids):
+    """Check the new centroid is whether smaller
+    or bigger than the old one.
+    """
+    return (set([tuple(a) for a in centroids]) ==
+        set([tuple(b) for b in new_centroids]))
+
 def process_data():
     """Process KNN program.
     """
