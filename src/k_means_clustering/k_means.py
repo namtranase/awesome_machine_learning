@@ -54,6 +54,23 @@ def kmeans_update_centroids(X, labels, K):
 
     return centroids
 
+def kmeans(X, K):
+    """Implement kmeans algorithm in easy way.
+    """
+    centroids = [kmeans_init_centroids(X, K)]
+    labels = []
+    it = 0
+    while True:
+        logging.debug('Iteration: %s', it)
+        labels.append(kmeans_assign_labels(X, centroids[-1]))
+        new_centroids = kmeans_update_centroids(X, labels[-1], K)
+        if has_converged(centroids[-1], new_centroids):
+            break
+        centroids.append(new_centroids)
+        it += 1
+
+    return (centroids, labels, it)
+
 def process_data():
     """Process KNN program.
     """
