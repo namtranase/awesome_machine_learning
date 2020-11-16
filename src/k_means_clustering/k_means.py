@@ -44,6 +44,16 @@ def has_converged(centroids, new_centroids):
     return (set([tuple(a) for a in centroids]) ==
         set([tuple(b) for b in new_centroids]))
 
+def kmeans_update_centroids(X, labels, K):
+    """Update the new centroids for data.
+    """
+    centroids = np.zeros((K, X.shape[1]))
+    for k in range (K):
+        X_k = X[labels==k, :]
+        centroids[k,:] = np.mean(X_k, axis=0)
+
+    return centroids
+
 def process_data():
     """Process KNN program.
     """
