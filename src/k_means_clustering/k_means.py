@@ -5,6 +5,7 @@ from time import time
 import numpy as np
 from scipy.spatial.distance import cdist
 import random
+from sklearn.cluster import KMeans
 
 import settings
 from src.config.config import read_config_file
@@ -85,7 +86,11 @@ def process_data():
 
     # Simple kmeans
     (centroids, labels, it) = kmeans(X, K)
-    logging.debug('Centrel found by simple kmeans: %s', centroids)
+    logging.debug('Centrel found by simple kmeans: %s', centroids[-1])
+
+    # scikit-learn kmeans
+    model = KMeans(n_clusters=3, random_state=0).fit(X)
+    logging.debug('Centrel found by sklearn kmeans: %s', model.cluster_centers_)
 
 def main():
     """Main program for KNN program.
