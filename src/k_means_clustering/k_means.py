@@ -25,6 +25,12 @@ def prepare_data():
 
     return X, original_labels
 
+def kmeans_init_centroids(X, k):
+    # Randomly choose k rows of X as centroids.
+
+    return X[np.random.choice(X.shape[0], k, replace=False)]
+
+
 def process_data():
     """Process KNN program.
     """
