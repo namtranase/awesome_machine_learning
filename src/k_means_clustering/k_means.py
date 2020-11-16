@@ -3,7 +3,7 @@ import logging
 from time import time
 
 import numpy as np
-import scipy.spatial.distance import cdist
+from scipy.spatial.distance import cdist
 import random
 
 import settings
@@ -15,20 +15,27 @@ def prepare_data():
     means = [[2, 2], [8, 3], [3, 6]]
     cov = [[1, 0], [0, 1]]
     N = 500
-    X0 = np.random.multivariate_normal(mean[0], cov, N)
-    X1 = np.random.multivariate_normal(mean[1], cov, N)
-    X2 = np.random.multivariate_normal(mean[2], cov, N)
+    X0 = np.random.multivariate_normal(means[0], cov, N)
+    X1 = np.random.multivariate_normal(means[1], cov, N)
+    X2 = np.random.multivariate_normal(means[2], cov, N)
 
     X = np.concatenate((X0, X1, X2), axis=0)
-    # Define 3 clusters
-    K = 3
-    original_labes = np.asarray([0]*N + [1]*N + [2]*N).T
+
+    original_labels = np.asarray([0]*N + [1]*N + [2]*N).T
+
+    return X, original_labels
 
 def process_data():
     """Process KNN program.
     """
     np.random.seed(18)
+    # Define 3 clusters
+    K = 3
 
+    # Prepare data
+    X, original_labels = prepare_data()
+    logging.debug('Numbers of data: %s', len(X))
+    logging.debug('Labels of data: %s', set(original_labels))
 
 def main():
     """Main program for KNN program.
