@@ -83,6 +83,10 @@ def process_data():
     logging.debug('Numbers of data: %s', len(X))
     logging.debug('Labels of data: %s', set(original_labels))
 
+    # Simple kmeans
+    (centroids, labels, it) = kmeans(X, K)
+    logging.debug('Centrel found by simple kmeans: %s', centroids)
+
 def main():
     """Main program for KNN program.
     """
