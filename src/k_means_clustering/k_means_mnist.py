@@ -32,6 +32,7 @@ def process_data(config):
     logging.debug('Fetch mnist dataset...')
     mnist = prepare_data(config)
 
+    # TODO: need to improve
     # Kmeans for Mnist data
     K = 10
     N = 10000
