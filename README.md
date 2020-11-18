@@ -65,3 +65,9 @@ Compare simple kmeans and sklearn kmeans
 ```bash
 PYTHONPATH=. ./bin/k_means_clustering
 ```
+
+Run kmeans on mnist dataset
+
+```bash
+PYTHONPATH=. ./bin/k_means_clustering_mnist
+```
