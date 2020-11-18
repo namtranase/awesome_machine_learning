@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from src.k_means_clustering import k_means_mnist
+from src.k_means_clustering import k_means
 
 if __name__ == '__main__':
     start_time = datetime.now()
