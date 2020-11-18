@@ -2,4 +2,4 @@ workers: 4
 debug: True
 
 data:
-  minist: 'data/minist/'
+  mnist: 'data/mnist/'
