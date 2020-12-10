@@ -32,13 +32,13 @@ Recommendation System (movielens): (https://grouplens.org/datasets/movielens/100
 
 ### Run Recommendation System
 
-`Content based recommendation system` (Make sure you download the dataset to data dir before running program)::
+`Content based` recommendation system (Make sure you download the dataset to data dir before running program)::
 
 ```bash
 PYTHONPATH=. ./bin/content_based_rs
 ```
 
-`Neighboor based collaborative filtering recommendation system`:
+`Neighboor based collaborative filtering` recommendation system:
 
 ```bash
 PYTHONPATH=. ./bin/neghboor_based_rs
