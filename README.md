@@ -1,9 +1,9 @@
 # awesome_machine_learning
 Implement various kind of Machine Learning Algorithm.
 The idea and suggest code are come from blog:
-https://machinelearningcoban.com/
+(https://machinelearningcoban.com/)
 
-Thankfully for the author of the book "Machine Learning co ban": @Vu Huu Tiep.
+Thankfully for the author of the book `Machine Learning co ban`: @Vu Huu Tiep.
 
 Each dir is a one specific machine learning topic or algorithm.
 
@@ -28,17 +28,17 @@ pip install -r requirements.txt
 
 ### Link dataset
 
-Recommendation System (movielens): https://grouplens.org/datasets/movielens/100k/
+Recommendation System (movielens): (https://grouplens.org/datasets/movielens/100k/)
 
 ### Run Recommendation System
 
-Content based recommendation system (Make sure you download the dataset to data dir before running program)::
+`Content based recommendation system` (Make sure you download the dataset to data dir before running program)::
 
 ```bash
 PYTHONPATH=. ./bin/content_based_rs
 ```
 
-Neighboor based collaborative filtering recommendation system:
+`Neighboor based collaborative filtering recommendation system`:
 
 ```bash
 PYTHONPATH=. ./bin/neghboor_based_rs
