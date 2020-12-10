@@ -6,7 +6,23 @@ The idea and suggest code are come from blog:
 Thankfully for the author of the book `Machine Learning co ban`: @Vu Huu Tiep.
 
 Each dir is a one specific machine learning topic or algorithm.
+## Project structure
 
+```bash
+├── bin
+├── data
+├── src
+│   ├── config
+│   │   ├──config.py
+│   ├── k_means_clustering
+│   ├── k_means_neighbors
+│   ├── k_means_clustering
+├── .gitignore
+├── config.yaml
+├── README.md
+├── requirements.txt
+├── settings.py
+```
 ## Quick Start
 
 ### Setup Project
