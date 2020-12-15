@@ -34,8 +34,8 @@ def process_data(config):
 
     # TODO: need to improve
     # Kmeans for Mnist data
-    K = 10
-    N = 10000
+    K = 10 # Number of cluster
+    N = 10000 # Number of sample
     X = mnist.data(np.random.choice(mnist.data.shape[0], N))
     kmeans = KMeans(n_clusters=K).fit(X)
     pred_label = kmeans.predict(X)
