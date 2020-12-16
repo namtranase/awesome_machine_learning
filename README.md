@@ -87,3 +87,7 @@ Run kmeans on mnist dataset
 ```bash
 PYTHONPATH=. ./bin/k_means_clustering_mnist
 ```
+
+### Run Naive Bayes Classifiers
+
+Simple naive bayes based on sklearn
