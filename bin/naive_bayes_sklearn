@@ -2,9 +2,9 @@
 
 from datetime import datetime
 
-from src.k_means_clustering import k_means
+from src.naive_bayes_classifiers import naive_bayes_sklearn
 
 if __name__ == '__main__':
     start_time = datetime.now()
-    k_means.main()
+    naive_bayes_sklearn.main()
     print("Run time: {}".format(datetime.now() - start_time))

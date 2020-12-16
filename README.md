@@ -91,3 +91,7 @@ PYTHONPATH=. ./bin/k_means_clustering_mnist
 ### Run Naive Bayes Classifiers
 
 Simple naive bayes based on sklearn
+
+```bash
+PYTHONPATH=. ./bin/naive_bayes_sklearn
+```
