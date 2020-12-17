@@ -1,5 +1,5 @@
 from __future__ import print_function
-from sklearn.naive_bayes import MutinomialNB
+from sklearn.naive_bayes import MultinomialNB
 import logging
 from time import time
 
@@ -33,7 +33,7 @@ def process_data(config):
     """Process KNN program.
     """
     # Prepare train data and their lables
-    train_data, labels = prepare_data()
+    train_data, test_data, labels = prepare_data(config)
 
     # # Prepare data
     # X, original_labels = prepare_data()
