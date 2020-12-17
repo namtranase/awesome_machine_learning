@@ -2,7 +2,7 @@
 
 from datetime import datetime
 
-from src.naive_bayes_classifier import naive_bayes_sklearn
+from src.naive_bayes_classifer import naive_bayes_sklearn
 
 if __name__ == '__main__':
     start_time = datetime.now()
