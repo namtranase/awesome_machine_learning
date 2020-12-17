@@ -22,7 +22,7 @@ def prepare_data(config):
     d6 = np.array([[0, 1, 0, 0, 0, 0, 0, 1, 1]])
 
     train_data = np.array([d1, d2, d3, d4])
-    labels = np.array('B', 'B', 'B' 'N')
+    labels = np.array(['B', 'B', 'B' 'N'])
     test_data = np.array([d5, d6])
     logging.debug("Number of training samples: %s", len(train_data))
     logging.debug("Number of testing samples: %s", len(test_data))
