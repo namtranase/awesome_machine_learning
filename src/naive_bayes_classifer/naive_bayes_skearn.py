@@ -11,16 +11,23 @@ from src.config.config import read_config_file
 def prepare_data(config):
     """Prepare data for training.
     """
+    # Train data
     d1 = [2, 1, 1, 0, 0, 0, 0, 0, 0]
     d2 = [1, 1, 0, 1, 1, 0, 0, 0, 0]
     d3 = [0, 1, 0, 0, 1, 1, 0, 0, 0]
     d4 = [0, 1, 0, 0, 0, 0, 1, 1, 1]
 
-    train_data = np.array([d1, d2, d3, d4])
-    labels = np.array('N', 'N', 'N' 'B')
-    logging.debug("Number of samples: %s", len(train_data))
+    # Test data
+    d5 = np.array([[2, 0, 0, 1, 0, 0, 0, 1, 0]])
+    d6 = np.array([[0, 1, 0, 0, 0, 0, 0, 1, 1]])
 
-    return train_data, labels
+    train_data = np.array([d1, d2, d3, d4])
+    labels = np.array('B', 'B', 'B' 'N')
+    test_data = np.array([d5, d6])
+    logging.debug("Number of training samples: %s", len(train_data))
+    logging.debug("Number of testing samples: %s", len(test_data))
+
+    return train_data, test_data, labels
 
 def process_data(config):
     """Process KNN program.
@@ -47,7 +54,7 @@ def main():
     config = read_config_file(settings.config_file)
     if config['debug']:
         logging.basicConfig(level=logging.DEBUG)
-    logging.debug('Start K-means with config: %s', config)
+    logging.debug('Start Naive bayes with config: %s', config)
     process_data(config)
 
 if __name__ == "__main__":
