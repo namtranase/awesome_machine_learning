@@ -1,11 +1,9 @@
 from __future__ import print_function
+from sklearn.naive_bayes import MutinomialNB
 import logging
 from time import time
 
 import numpy as np
-from scipy.spatial.distance import cdist
-import random
-from sklearn.cluster import KMeans
 
 import settings
 from src.config.config import read_config_file
@@ -13,13 +11,20 @@ from src.config.config import read_config_file
 def prepare_data():
     """Prepare data for training.
     """
+    d1 = [2, 1, 1, 0, 0, 0, 0, 0, 0]
+    d2 = [1, 1, 0, 1, 1, 0, 0, 0, 0]
+    d3 = [0, 1, 0, 0, 1, 1, 0, 0, 0]
+    d4 = [0, 1, 0, 0, 0, 0, 1, 1, 1]
+    train_data = np.array([d1, d2, d3, d4])
+    labels = np.array('N', 'N', 'N' 'B')
 
-    return None
-
-def process_data():
+    return train_data, labels
+config
+def process_data(config):
     """Process KNN program.
     """
-    np.random.seed(18)
+    # Define train data and their lables
+    train_data, labels = prepare_data()
     # Define 3 clusters
     K = 3
 
@@ -43,7 +48,7 @@ def main():
     if config['debug']:
         logging.basicConfig(level=logging.DEBUG)
     logging.debug('Start K-means with config: %s', config)
-    process_data()
+    process_data(config)
 
 if __name__ == "__main__":
     main()
