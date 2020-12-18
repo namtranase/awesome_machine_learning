@@ -18,10 +18,25 @@ def prepare_data(config):
     d4 = [0, 1, 0, 0, 0, 0, 1, 1, 1]
 
     train_data = np.array([d1, d2, d3, d4])
-    labels = np.array(['B', 'B', 'B' 'N'])
+    labels = np.array(['B', 'B', 'B', 'N'])
     logging.debug("Number of training samples: %s", len(train_data))
 
-    return train_data, test_data, labels
+    return train_data, labels
+
+def prepare_bernoulli_data(config):
+    """Prepare data for training.
+    """
+    # Train data
+    d1 = [2, 1, 1, 0, 0, 0, 0, 0, 0]
+    d2 = [1, 1, 0, 1, 1, 0, 0, 0, 0]
+    d3 = [0, 1, 0, 0, 1, 1, 0, 0, 0]
+    d4 = [0, 1, 0, 0, 0, 0, 1, 1, 1]
+
+    train_data = np.array([d1, d2, d3, d4])
+    labels = np.array(['B', 'B', 'B', 'N'])
+    logging.debug("Number of training samples: %s", len(train_data))
+
+    return train_data, labels
 
 def process_data(config):
     """Process KNN program.
@@ -36,8 +51,8 @@ def process_data(config):
     # Test results
     d5 = np.array([[2, 0, 0, 1, 0, 0, 0, 1, 0]])
     d6 = np.array([[0, 1, 0, 0, 0, 0, 0, 1, 1]])
-    logging("Predict class of d5: %s", model.predict(d5)[0])
-    logging("Predict prob of d6 in each class: %s", model.predict_proba(d6))
+    logging.debug("Predict class of d5: %s", str(model.predict(d5)[0]))
+    logging.debug("Predict prob of d6 in each class: %s", model.predict_proba(d6))
 
 def main():
     """Main program for Naive bayes program.
