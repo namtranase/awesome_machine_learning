@@ -17,15 +17,9 @@ def prepare_data(config):
     d3 = [0, 1, 0, 0, 1, 1, 0, 0, 0]
     d4 = [0, 1, 0, 0, 0, 0, 1, 1, 1]
 
-    # Test data
-    d5 = np.array([[2, 0, 0, 1, 0, 0, 0, 1, 0]])
-    d6 = np.array([[0, 1, 0, 0, 0, 0, 0, 1, 1]])
-
     train_data = np.array([d1, d2, d3, d4])
     labels = np.array(['B', 'B', 'B' 'N'])
-    test_data = np.array([d5, d6])
     logging.debug("Number of training samples: %s", len(train_data))
-    logging.debug("Number of testing samples: %s", len(test_data))
 
     return train_data, test_data, labels
 
@@ -33,15 +27,17 @@ def process_data(config):
     """Process KNN program.
     """
     # Prepare train data and their lables
-    train_data, test_data, labels = prepare_data(config)
+    train_data, labels = prepare_data(config)
 
     # Simple Naive bayes model
     model = MultinomialNB()
     model.fit(train_data, labels)
 
     # Test results
-    logging("Predict class of d5: %s", model.predict(test_data[0])[0])
-    logging("Predict prob of d6 in each class: %s", model.predict_proba(test_data[1]))
+    d5 = np.array([[2, 0, 0, 1, 0, 0, 0, 1, 0]])
+    d6 = np.array([[0, 1, 0, 0, 0, 0, 0, 1, 1]])
+    logging("Predict class of d5: %s", model.predict(d5)[0])
+    logging("Predict prob of d6 in each class: %s", model.predict_proba(d6))
 
 def main():
     """Main program for Naive bayes program.
