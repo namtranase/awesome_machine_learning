@@ -35,18 +35,13 @@ def process_data(config):
     # Prepare train data and their lables
     train_data, test_data, labels = prepare_data(config)
 
-    # # Prepare data
-    # X, original_labels = prepare_data()
-    # logging.debug('Numbers of data: %s', len(X))
-    # logging.debug('Labels of data: %s', set(original_labels))
+    # Simple Naive bayes model
+    model = MultinomialNB()
+    model.fit(train_data, labels)
 
-    # # Simple kmeans
-    # (centroids, labels, it) = kmeans(X, K)
-    # logging.debug('Centrel found by simple kmeans: %s', centroids[-1])
-
-    # # scikit-learn kmeans
-    # model = KMeans(n_clusters=3, random_state=0).fit(X)
-    # logging.debug('Centrel found by sklearn kmeans: %s', model.cluster_centers_)
+    # Test results
+    logging("Predict class of d5: %s", model.predict(test_data[0])[0])
+    logging("Predict prob of d6 in each class: %s", model.predict_proba(test_data[1]))
 
 def main():
     """Main program for Naive bayes program.
