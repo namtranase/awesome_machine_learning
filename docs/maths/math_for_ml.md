@@ -1,8 +1,5 @@
-# K Mean Clustering algorithm
+# Các ứng dụng của Bayer Rule
 
-## Idea
+## Linear vs Affine
 
-## Algorithm
-
-
-## Example
+## Multivariate Gaussian? Exponential Family in Gaussian!
