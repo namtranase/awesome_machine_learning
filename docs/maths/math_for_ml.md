@@ -14,3 +14,6 @@ Linear functions between vector spaces preserve the vector space structure (so i
 
 
 ## Multivariate Gaussian? Exponential Family in Gaussian!
+1. Explain
+
+2. Userful Link
