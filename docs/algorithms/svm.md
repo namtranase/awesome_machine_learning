@@ -43,4 +43,21 @@ Here is the answer [Duality Optimization](https://en.wikipedia.org/wiki/Duality_
    - First order optimality conditions in x
    - Solve for x and plug it back into L
 
+# SVM kernel
+- Tại sao cần kernel?
+Các bài toán không phải lúc nào cũng linear separable => bài toán phân lớp Non-linear separable
+- Phương pháp dùng SVM với dạng này:
+   + Chuyển không gian dữ liệu về separable _input space_ => _feature space_
+   + Áp dụng Linear SVM
+- Tuy nhiên, không nhất thiết phải chuyển hẳn sang feature space để tính toán (bởi số chiều thường sẽ rất lớn)
+=> Sử dụng các hàm nhân (kernel functions) `K`
+
+`Một số kernel thường sử dụng: đa thức, Gaussian basis function, Sigmoidal`
+
+- What is kernel trick?
+
+- How to choose the right kernel?
+
+
+# Struture SVM
 
