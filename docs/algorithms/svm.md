@@ -7,4 +7,11 @@
 - SVM còn được coi là maximum margin classifier.
 - Sử dụng Karus Kuln Tucker
 
+## Some questions
+- Why maximize margin?
+Cần hiểu về khái niệm công bằng (các điểm được phân chia đồng đều - bằng nhau đến đường phân chia), và thịnh vượng (khoảng cách đến hyperplane cần max, khi đó cả 2 class đều vui)
+- Các chứng minh dùng Largrage khá là khó hiểu, có cách nào intuative hơn không?
+Phải hiểu, có link hay đây :v (below)
+- Does Slack and C are hyperparameter?
+
 
