@@ -25,4 +25,22 @@ Phải hiểu, có link hay đây :v (below)
 - Updating math function here .…
 - Nếu gặp trường hợp point quá lỗi => sử dụng slack
 
+### Largrange Mutiplier
+- Constrain optimization problem [Explain Largrange](https://www.youtube.com/watch?time_continue=20&v=m-G3K2GPmEQ&feature=emb_logo&ab_channel=KhanAcademy)
+- Gradients of curve is perpendicular
+### Dual Problem
+- w maybe in infinite dimensional space
+- Vấn đề gì nếu các biết trong constraint là các biến cần tối ưu (nhiều) và ngược lại?
+- Tại sao dùng Largrange functions cho dual problem?
+Here is the answer [Duality Optimization](https://en.wikipedia.org/wiki/Duality_(optimization)#:~:text=The%20Lagrangian%20dual%20problem%20is,minimize%20the%20original%20objective%20function.)
+- read goldstein? virtual force $\alpha$?  Primal ?
+- Largrange functions (L) => Deravative at w, b need to be vanish => Plugging terms back to L
+- Plugging back hiện tại đang chưa ra?
+
+### Convex Programs
+   - Primal optization problem
+   - Lagrange function
+   - First order optimality conditions in x
+   - Solve for x and plug it back into L
+
 
