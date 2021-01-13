@@ -72,5 +72,9 @@ Updating ...
 ### Linear
  $k(\mathbf{x}, \mathbf{z}) = \mathbf{x}^T\mathbf{z}$
 
-# Struture SVM
+### Polynomial
+
+### RBF
+
+### Sigmoid
 
