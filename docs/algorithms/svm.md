@@ -57,5 +57,22 @@ Các bài toán không phải lúc nào cũng linear separable => bài toán ph�
 
 `Một số kernel thường sử dụng: đa thức, Gaussian basis function, Sigmoidal`
 
+- What is kernel trick?
+Là việc tận dụng việc nhân tích vô hướng trong hàm optimization, vì vậy ta không cần phải tính giá trị trực tiếp của 1 điểm khi qua một không gian mới (việc này có thể rất tốn chi phí tính toán nếu số lượng chiều trong miền mới lớn!)
+
+- How to choose the right kernel?
+Updating ...
+
+## Mercer Condition
+ $\sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}_m, \mathbf{x}_n) c_nc_m \geq 0, ~~ \forall c_i \in \mathbb{R}, i = 1, 2, \dots, N \quad \quad (7)$
+- Hàm này được thiết kế sao cho hàm optimization là hàm lồi.
+
+## Một số kernel thông dụng
+
+### Linear
+ $k(\mathbf{x}, \mathbf{z}) = \mathbf{x}^T\mathbf{z}$
+
+
+
 # Struture SVM
 
