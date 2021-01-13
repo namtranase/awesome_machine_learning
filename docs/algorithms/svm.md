@@ -1,11 +1,14 @@
 # SVM algorithm
 
+Very Good explained: [MIT SVM algorithm](https://www.youtube.com/watch?v=_PwhiWxHK8o&ab_channel=MITOpenCourseWare), [MIT SVM examples](https://www.youtube.com/watch?v=6nDqY8MPLDM&ab_channel=MITOpenCourseWare)
+
+
 ## Defination
-- Supervised learning methods used for [classification](https://scikit-learn.org/stable/modules/svm.html#svm-classification), [regression](https://scikit-learn.org/stable/modules/svm.html#svm-regression)and [outliers detection](https://scikit-learn.org/stable/modules/svm.html#svm-outlier-detection)
+- Supervised learning methods used for [classification](https://scikit-learn.org/stable/modules/svm.html#svm-classification), [regression](https://scikit-learn.org/stable/modules/svm.html#svm-regression) and [outliers detection](https://scikit-learn.org/stable/modules/svm.html#svm-outlier-detection)
 - Different [Kernel functions](https://scikit-learn.org/stable/modules/svm.html#svm-kernels) can be specified for the decision function
 - Some type of SVM: SVC and NuSVC (one-versus-one), LinearSVC (sklearn)
 - SVM còn được coi là maximum margin classifier.
-- Sử dụng Karus Kuln Tucker
+- Sử dụng Karus Kuln Tucker để giải quyết bài toán tối ưu
 
 ## Some questions
 - Why maximize margin?
@@ -13,7 +16,6 @@ Cần hiểu về khái niệm công bằng (các điểm được phân chia đ
 - Các chứng minh dùng Largrage khá là khó hiểu, có cách nào intuative hơn không?
 Phải hiểu, có link hay đây :v (below)
 - Does Slack and C are hyperparameter?
-Yes it is hyperparameter for tuning bester model!!
 
 ## Support topics
 
@@ -55,7 +57,5 @@ Các bài toán không phải lúc nào cũng linear separable => bài toán ph�
 
 `Một số kernel thường sử dụng: đa thức, Gaussian basis function, Sigmoidal`
 
-- What is kernel trick?
-
-
+# Struture SVM
 
