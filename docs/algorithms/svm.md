@@ -70,9 +70,7 @@ Updating ...
 ## Một số kernel thông dụng
 
 ### Linear
-\begin{equation}
-k(\mathbf{x}, \mathbf{z}) = \mathbf{x}^T\mathbf{z}
-\end{equation}
+
   $ k(\mathbf{x}, \mathbf{z}) = \mathbf{x}^T\mathbf{z} $
 
 ### Polynomial
