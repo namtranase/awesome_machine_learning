@@ -13,6 +13,7 @@ Cần hiểu về khái niệm công bằng (các điểm được phân chia đ
 - Các chứng minh dùng Largrage khá là khó hiểu, có cách nào intuative hơn không?
 Phải hiểu, có link hay đây :v (below)
 - Does Slack and C are hyperparameter?
+Yes it is hyperparameter for tuning bester model!!
 
 ## Support topics
 
@@ -56,8 +57,5 @@ Các bài toán không phải lúc nào cũng linear separable => bài toán ph�
 
 - What is kernel trick?
 
-- How to choose the right kernel?
 
-
-# Struture SVM
 
