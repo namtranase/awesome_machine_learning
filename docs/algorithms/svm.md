@@ -64,15 +64,13 @@ Là việc tận dụng việc nhân tích vô hướng trong hàm optimization,
 Updating ...
 
 ## Mercer Condition
- $\sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}_m, \mathbf{x}_n) c_nc_m \geq 0, ~~ \forall c_i \in \mathbb{R}, i = 1, 2, \dots, N \quad \quad (7)$
+    $\sum_{n=1}^N \sum_{m=1}^N k(\mathbf{x}_m, \mathbf{x}_n) c_nc_m \geq 0, ~~ \forall c_i \in \mathbb{R}, i = 1, 2, \dots, N \quad \quad (7)$
 - Hàm này được thiết kế sao cho hàm optimization là hàm lồi.
 
 ## Một số kernel thông dụng
 
 ### Linear
  $k(\mathbf{x}, \mathbf{z}) = \mathbf{x}^T\mathbf{z}$
-
-
 
 # Struture SVM
 
