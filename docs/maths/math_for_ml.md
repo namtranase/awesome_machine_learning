@@ -17,4 +17,4 @@ Linear functions between vector spaces preserve the vector space structure (so i
 1. Explain
 
 2. Userful Link
-Test git commit
+Test git config
