@@ -23,7 +23,7 @@ Each dir is a one specific machine learning topic or algorithm.
 ├── requirements.txt
 ├── settings.py
 ```
-## Quick Start
+## Quick Start 🔥
 
 ### Setup Project
 
@@ -46,7 +46,7 @@ pip install -r requirements.txt
 
 Recommendation System (movielens): (https://grouplens.org/datasets/movielens/100k/)
 
-### Run Recommendation System
+## Run Recommendation System 🔥
 
 `Content based` recommendation system (Make sure you download the dataset to data dir before running program)::
 
@@ -60,7 +60,7 @@ PYTHONPATH=. ./bin/content_based_rs
 PYTHONPATH=. ./bin/neghboor_based_rs
 ```
 
-### Run K Nearest Neighbors
+## Run K Nearest Neighbors 🔥
 
 Compare between regular and fast way when using simple knn
 
@@ -74,7 +74,7 @@ Run knn for iris dataset, tuning to get best parameters
 PYTHONPATH=. ./bin/k_nearest_neighbors_iris
 ```
 
-### Run K Means Clustering
+## Run K Means Clustering 🔥
 
 Compare simple kmeans and sklearn kmeans
 
