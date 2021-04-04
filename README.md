@@ -1,4 +1,4 @@
-# awesome_machine_learning
+# awesome-machine-learning
 Implement various kind of Machine Learning Algorithm.
 The idea and suggest code are come from blog:
 (https://machinelearningcoban.com/)
